@@ -13,7 +13,7 @@ class Calculator {
     return Array.from(this.stack);
   }
 
-  calculate(operatorSymbol) {
+  applyOperator(operatorSymbol) {
     const operator = this.operators[operatorSymbol];
     if(!operator) throw new Error(`Unknown operator: ${operatorSymbol}`);
     if(this.stack.length < operator.args) throw new Error("Not enough operands");

@@ -39,7 +39,7 @@ class CLI {
           if(!isNaN(symbol) && symbol.trim() !== '') {
             lastResult = this.calculator.push(Number(symbol));
           } else if(this.calculator.operators.hasOwnProperty(symbol)) {
-            lastResult = this.calculator.calculate(symbol);
+            lastResult = this.calculator.applyOperator(symbol);
           } else {
             throw new Error(`Invalid input ${symbol}`);
           }
