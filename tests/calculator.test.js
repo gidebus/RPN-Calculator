@@ -23,6 +23,14 @@ describe('Calculator', () => {
     expect(() => calc.applyOperator('+')).toThrow('Not enough operands');
   })
 
+  test('Clearing stack', () => {
+    calc.push(4);
+    calc.push(3);
+    expect(calc.getStack().length).toBe(2);
+    calc.clearStack();
+    expect(calc.getStack().length).toBe(0);
+  })
+
   describe('Addition', () => {
     test('Addition of two elements', () => {
       calc.push(7);

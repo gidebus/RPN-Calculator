@@ -26,6 +26,13 @@ class CLI {
         return;
       }
 
+      if(trimmed.toLocaleLowerCase() === 'clear') {
+        this.calculator.clearStack();
+        console.log('Stack cleared');
+        this.lineReader.prompt();
+        return;
+      }
+
       if(trimmed.length === 0) {
         this.lineReader.prompt();
         return;

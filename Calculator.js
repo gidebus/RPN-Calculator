@@ -25,6 +25,10 @@ class Calculator {
     this.stack.push(result);
     return result;
   }
+
+  clearStack() {
+    this.stack = [];
+  }
 }
 
 module.exports = Calculator;
