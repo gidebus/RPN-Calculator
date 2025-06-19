@@ -18,4 +18,22 @@ describe('Calculator', () => {
     calc.push(13);
     expect(calc.calculate('+')).toBe(20);
   })
+
+  test('Subtraction of two elements', () => {
+    calc.push(6);
+    calc.push(3);
+    expect(calc.calculate('-')).toBe(3);
+  })
+
+  test('Multiplication of two elements', () => {
+    calc.push(5);
+    calc.push(5);
+    expect(calc.calculate('*')).toBe(25);
+  })
+
+  test('Division of two elements', () => {
+    calc.push(25);
+    calc.push(5);
+    expect(calc.calculate('/')).toBe(5);
+  })
 });
