@@ -16,6 +16,7 @@ class Calculator {
   calculate(operatorSymbol) {
     const operator = this.operators[operatorSymbol];
     if(!operator) throw new Error(`Unknown operator: ${operatorSymbol}`);
+    if(this.stack.length < operator.args) throw new Error("Not enough operands");
     const operands = [];
     for(let i = 0; i < operator.args; i++) {
       operands.unshift(this.stack.pop());
