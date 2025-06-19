@@ -6,7 +6,7 @@ class Add extends Operator {
   }
 
   apply(operands) {
-    return operands.reduce((a, b) => a + b , 0);
+    return operands.reduce((a, b) => a + b, 0);
   }
 }
 
