@@ -16,6 +16,7 @@ class CLI {
   }
 
   start() {
+    console.log('Welcome to CLI RPN Calculator. Type "q" to quit or "clear" to reset the stack');
     this.lineReader.prompt();
 
     this.lineReader.on('line', (line) => {
