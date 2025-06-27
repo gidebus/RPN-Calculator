@@ -1,12 +1,12 @@
 
 const Calculator = require('./Calculator'); 
-const operators = require('./operators/index');
 const Parser = require('./helpers/Parser')
-const CLI = require('./interfaces/CLI');
+const CommandLineHandler = require('./handlers/CommandLineHandler');
+const operators = require('./operators/index');
 
 const calculator = new Calculator(operators);
 const parser = new Parser(operators);
-const cli = new CLI(calculator, parser);
+const cli = new CommandLineHandler(calculator, parser);
 
 
 cli.start();
