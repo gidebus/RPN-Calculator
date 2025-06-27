@@ -26,6 +26,18 @@ class Calculator {
     return result;
   }
 
+  calculate(symbols) {
+    let result;
+    for(const symbol of symbols) {
+      if(typeof symbol === 'number') {
+        result = this.push(symbol);
+      } else if(this.operators.hasOwnProperty(symbol)) {
+        result = this.applyOperator(symbol);
+      }
+    }
+    return result;
+  }
+
   clearStack() {
     this.stack = [];
   }
