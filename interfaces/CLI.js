@@ -1,8 +1,9 @@
 const readline = require('readline');
 
 class CLI {
-  constructor(calculator) {
+  constructor(calculator, parser) {
     this.calculator = calculator;
+    this.parser = parser;
     this.lineReader = readline.createInterface({
       input: process.stdin,
       output: process.stdout,
@@ -20,41 +21,34 @@ class CLI {
     this.lineReader.prompt();
 
     this.lineReader.on('line', (line) => {
-      const trimmed = line.trim();
+      const input = line.trim().toLowerCase();
 
-      if(trimmed.toLowerCase() === 'q') {
+      if(input === 'q') {
         this.exit();
         return;
       }
 
-      if(trimmed.toLocaleLowerCase() === 'clear') {
+      if(input === 'clear') {
         this.calculator.clearStack();
         console.log('Stack cleared');
         this.lineReader.prompt();
         return;
       }
 
-      if(trimmed.length === 0) {
+      if(input.length === 0) {
         this.lineReader.prompt();
         return;
       }
 
-      const symbols = trimmed.split(' ').filter(symbol => symbol !== '');
-      let lastResult = undefined;
-
+      let result = undefined;
+      
       try {
-        for(const symbol of symbols) {
-          if(!isNaN(symbol) && symbol.trim() !== '') {
-            lastResult = this.calculator.push(Number(symbol));
-          } else if(this.calculator.operators.hasOwnProperty(symbol)) {
-            lastResult = this.calculator.applyOperator(symbol);
-          } else {
-            throw new Error(`Invalid input ${symbol}`);
-          }
-        }
+        const symbols = this.parser.parse(input);
+         result = this.calculator.calculate(symbols);
 
-        if(lastResult !== undefined) {
-          console.log(lastResult);
+        if(result !== undefined) {
+          console.log(this.calculator.getStack());
+          console.log(result);
         }
 
       } catch(err) {
