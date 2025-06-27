@@ -1,6 +1,6 @@
 const readline = require('readline');
 
-class CLI {
+class CommandLineHandler {
   constructor(calculator, parser) {
     this.calculator = calculator;
     this.parser = parser;
@@ -62,4 +62,4 @@ class CLI {
   }
 }
 
-module.exports = CLI;
+module.exports = CommandLineHandler;
